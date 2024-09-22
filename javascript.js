@@ -2,7 +2,13 @@ const container = document.querySelector("#container");
 const div_size = "30px";
 container.style.width = `${parseInt(div_size) * 16}px`;
 
+const button = document.createElement("button");
+button.textContent = "Click me to change size!";
+button.addEventListener("click", () => {
+    const size = parseInt(prompt("Please choose a size that's less than 100"));
+});
 
+document.body.insertBefore(button, document.body.firstChild);
 
 
 function makeGrid() {
