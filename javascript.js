@@ -2,6 +2,9 @@ const container = document.querySelector("#container");
 const div_size = "30px";
 container.style.width = `${parseInt(div_size) * 16}px`;
 
+
+
+
 function makeGrid() {
     for (let i = 0; i < 16; i++) {
         for (let j = 0; j < 16; j++) {
@@ -18,4 +21,10 @@ function makeGrid() {
 
 makeGrid();
 const divs = document.querySelectorAll("#container > div");
+
+divs.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+        div.style.background = "skyblue";
+    });
+});
 
