@@ -15,6 +15,7 @@ function createButton() {
             alert("Invalid input");
         } else {
             grid_size = new_size;
+            makeGrid(grid_size);
         };
     });
 }
@@ -32,16 +33,18 @@ function makeGrid(grid_size) {
             div.style.boxSizing = "border-box";
             container.appendChild(div);
         };
-    };    
+    };   
+
+    const divs = document.querySelectorAll("#container > div");
+    divs.forEach((div) => {
+        div.addEventListener("mouseover", () => {
+            div.style.background = "skyblue";
+        });
+    });
+    
 };
+
 
 makeGrid(grid_size);
 createButton();
-const divs = document.querySelectorAll("#container > div");
-
-divs.forEach((div) => {
-    div.addEventListener("mouseover", () => {
-        div.style.background = "skyblue";
-    });
-});
 
