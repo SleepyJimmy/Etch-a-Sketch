@@ -23,13 +23,11 @@ function createButton() {
 }
 
 
-
 function makeGrid(grid_size) {
     for (let i = 0; i < grid_size; i++) {
         for (let j = 0; j < grid_size; j++) {
             const div = document.createElement("div");
             div.style.border = "1px solid black";
-            div.textContent = "hi";
             div.style.width = div_size;
             div.style.height = div_size;
             div.style.boxSizing = "border-box";
@@ -49,4 +47,3 @@ function makeGrid(grid_size) {
 
 makeGrid(grid_size);
 createButton();
-
