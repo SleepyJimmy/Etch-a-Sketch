@@ -10,12 +10,14 @@ function createButton() {
     document.body.insertBefore(button, document.body.firstChild);
 
     button.addEventListener("click", () => {
-        new_size = parseInt(prompt("Please choose a size that's less than 100"));
+        let new_size = parseInt(prompt("Please choose a size that's less than 100"));
         if (!Number.isInteger(new_size) || new_size < 0 || new_size > 100) {
             alert("Invalid input");
         } else {
             grid_size = new_size;
+            container.innerHTML = '';
             makeGrid(grid_size);
+            container.style.width = `${parseInt(div_size) * grid_size}px`;
         };
     });
 }
