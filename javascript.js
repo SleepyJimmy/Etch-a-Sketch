@@ -2,15 +2,21 @@ const container = document.querySelector("#container");
 const div_size = "30px";
 let grid_size = 16;
 container.style.width = `${parseInt(div_size) * grid_size}px`;
+const colours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+
+
+function randomColour() {
+    return Math.floor(Math.random() * 7);
+};
 
 
 function createButton() {
     const button = document.createElement("button");
-    button.textContent = "Click me to change size!";
+    button.textContent = "Click me to change grid size!";
     document.body.insertBefore(button, document.body.firstChild);
 
     button.addEventListener("click", () => {
-        let new_size = parseInt(prompt("Please choose a size that's less than 100"));
+        let new_size = parseInt(prompt("Change the number of squares per side", "Type a number from 0 to 100"));
         if (!Number.isInteger(new_size) || new_size < 0 || new_size > 100) {
             alert("Invalid input");
         } else {
@@ -38,7 +44,7 @@ function makeGrid(grid_size) {
     const divs = document.querySelectorAll("#container > div");
     divs.forEach((div) => {
         div.addEventListener("mouseover", () => {
-            div.style.background = "skyblue";
+            div.style.background ? div.style.background : div.style.background = colours[randomColour()];
         });
     });
     
