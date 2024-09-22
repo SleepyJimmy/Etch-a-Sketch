@@ -1,19 +1,29 @@
 const container = document.querySelector("#container");
 const div_size = "30px";
-container.style.width = `${parseInt(div_size) * 16}px`;
-
-const button = document.createElement("button");
-button.textContent = "Click me to change size!";
-button.addEventListener("click", () => {
-    const size = parseInt(prompt("Please choose a size that's less than 100"));
-});
-
-document.body.insertBefore(button, document.body.firstChild);
+let grid_size = 16;
+container.style.width = `${parseInt(div_size) * grid_size}px`;
 
 
-function makeGrid() {
-    for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+function createButton() {
+    const button = document.createElement("button");
+    button.textContent = "Click me to change size!";
+    document.body.insertBefore(button, document.body.firstChild);
+
+    button.addEventListener("click", () => {
+        new_size = parseInt(prompt("Please choose a size that's less than 100"));
+        if (!Number.isInteger(new_size) || new_size < 0 || new_size > 100) {
+            alert("Invalid input");
+        } else {
+            grid_size = new_size;
+        };
+    });
+}
+
+
+
+function makeGrid(grid_size) {
+    for (let i = 0; i < grid_size; i++) {
+        for (let j = 0; j < grid_size; j++) {
             const div = document.createElement("div");
             div.style.border = "1px solid black";
             div.textContent = "hi";
@@ -25,7 +35,8 @@ function makeGrid() {
     };    
 };
 
-makeGrid();
+makeGrid(grid_size);
+createButton();
 const divs = document.querySelectorAll("#container > div");
 
 divs.forEach((div) => {
